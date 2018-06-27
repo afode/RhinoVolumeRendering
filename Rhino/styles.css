@@ -1,0 +1,66 @@
+
+html, body {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+   
+}
+
+#renderCanvas {
+    width: 100%;
+    height: 85%;
+    touch-action: none;
+}
+
+#mainTitle{
+	font-family: Georgia, sans-serif;
+	font-size: 60px; 
+	margin-bottom: 0.5px;
+	margin-left: 5%;
+}
+
+h2.subTitle {
+	font-family: Georgia, sans-serif;
+	font-size: 30px;
+	margin-top: 17px;
+	margin-left: 5%;
+}
+
+p.paragraphs {
+	font-family: Georgia, sans-serif;
+	font-size: 18px;
+	margin: 5%;
+}
+
+ul.paragraphs {
+	font-family: Georgia, sans-serif;
+	font-size: 18px;
+	margin: 5%;
+}
+
+strong.paragraphs {
+	font-family: Georgia, sans-serif;
+	font-size: 18px;
+	margin: 5%;
+}
+
+#paragraph1 {
+	text-align: center;
+	font-family: Georgia, sans-serif;
+	font-size: 22px;
+	margin-right: 19%;
+	margin-left: 10%;
+
+}
+
+#dropdown {
+	margin-bottom: 10px;
+}
+
+#write-up {
+	margin: 5%;
+}
+
+#dropdown {
+	margin-left: 5%
+}

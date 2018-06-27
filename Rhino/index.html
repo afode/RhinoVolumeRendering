@@ -1,0 +1,139 @@
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Rhino</title>
+
+    <!-- Link to the last version of BabylonJS -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+
+    <!-- Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf -->
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <!-- Link to pep.js to ensure pointer events work consistently in all browsers -->
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
+
+    <script src="rhinov3.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/00b7b31c511ce943616fd1c5512819b8fcf13ab6/css/index.css'/> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+    <script src="dat.gui.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.0/pep.min.js"></script>
+</head>
+
+<body>
+	<!-- <div id="fpsDisplay" style="position: absolute; top: 50px; right: 10px;"></div> -->
+	
+	<!-- <div> -->
+		<!-- <input id='file-input' type='file' multiple> -->
+		 <!-- <input type="file" (change)="fileChange($event)" name="file" id="file" class="inputfile"> -->
+		 <!-- <input type='file' accept='image/*' onchange='openFile(event)'><br>
+			<img id='output'>
+			<script>
+			  	var openFile = function(event) {
+			    	var input = event.target;
+			    	var reader = new FileReader();
+			    	reader.onload = function(){
+			        	var dataURL = reader.result;
+			        	var output = document.getElementById('output');
+			        	output.src = dataURL;
+			    	};
+			    reader.readAsDataURL(input.files[0]);
+			    };
+			</script> -->
+		<!-- <script>
+		    var fileInput = document.getElementById('file-input');
+		    fileInput.addEventListener('change', function(event) {
+			    var input = event.target;
+			    var layers = new Array();
+			    for (var i = 0; i < input.files.length; i++) {
+			        console.log(input.files[i].name);
+			        layers.push(input.files[i].name);
+		    	}
+		    });
+		</script> -->
+	<!-- </div> -->
+	<div>
+		<h1 id='mainTitle'>Rhino 3D Rendering</h1>
+		<h2 class='subTitle'>by Amanda Fode</h2>
+		<p id="paragraph1">
+			When this is complete - doctors, students and patients will be able to collect their mri or ct scan images, upload them to here, and watch their 3-D image rendered right in front of their eyes.
+		</p>
+	</div>
+	<div id="dropdown">
+		<select>
+			<option value="wrist1">Wrist-Top+Buttom View</option>
+			<option value="wrist2">Wrist-Front+Back View</option>
+			<option value="wrist3">Wrist-Side View</option>
+		</select>
+	</div>
+	<div>
+    	<canvas id="renderCanvas"></canvas>
+    	<span class="label" id="fpsLabel"></span>
+    	<div class="dg ac">
+    	<div class="dg main a" style="width: 245px;">
+    		<div style="width: 6px; margin-left: -3px; height: 112px; cursor: ew-resize; position: absolute;"></div>
+    			<ul style="height: auto;"><li class="cr number has-slider"><div>
+    			<span class="property-name">Layer</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 8.16327%;"></div></div></div></div></li><li class="cr number has-slider"><div>
+    			<span class="property-name">Transparency</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 79.5918%;"></div></div></div></div></li><li class="cr number has-slider"><div>
+    			<span class="property-name">Color</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 29.8597%;"></div></div></div></div></li><li class="cr number has-slider"><div>
+    			<span class="property-name">Brightness</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 25%;"></div></div></div></div></li></ul>
+    			<div class="close-button close-bottom" style="width: 245px;">Close Controls</div></div></div>
+    </div>
+    <div id='write-up'>
+    	<h2 class='subtitle'>Features:</h2>
+    	<p class='paragraphs'>
+    		My intentions for this 3D renderer was to create an online tool that would be useful to doctors and their patients, as well as medical students. </br></br>
+    		
+    		<strong>Custom Layers:</strong></br>
+    		Originally, I wanted to allow users to upload their own layers. I was able to upload my own files, but then had trouble retrieving the image data to import into my textureLayers() method. This is something I will continue to work on. </br></br>
+    		
+    		<strong>Controls GUI:</strong></br>
+    		I am still working on functionality of my controls GUI, but I want to allow my users to "hide layers", as to get a better view throughout the volume and see each individual slice. I also want my users to be able to increase/decrease the transparency and brightness. The transparency control changes the transparency of all of the layers. The Brightness will increase/decrease the intensity of the lights. Lastly, I want to add the functionality to change the color of the lights, as to change the color of the volume. </br></br>
+    	</p>
+    	<h2 class='subTitle'>Programming Tools and Languages:</h2>
+    	<p class='paragraphs'>
+    		For this project I used HTML and CSS along with Typescript and Babylon.js Library.</br></br>
+    		
+    		<strong>Typescript</strong> is a superset of Javascript which provides optional static typing, classes, and interfaces. After using it, I learned that it is more readable than JavaScript and, overall, it is more intuitive and user friendly. It reminds me a bit of C++ without the mess of pointers.</br></br>
+    		
+    		<strong>Babylon.js</strong> WebGL, or Web Graphics Library, is a Javascript API designed to render interactive 3D computer graphics and 2D graphics within any compatible web browser, without the use of any plug-ins. I used this API primarily for this project. It was simple and powerful and I recommend it for people interested in building simple online games. A similar WebGL is Three.js, which seemed a bit more powerful, having more features than Babylon. I will most likely use Three.js in the future. I am also thinking of re-writing my Rhino Volume Renderer using Three.js to see if it is any better in performance. 
+    	</p>
+    	<h2 class='subTitle'>What I learned from this project and WHAT NEXT:</h2>
+    	<p class='paragraphs'>
+    		<strong>Important/Difficult Tasks:</strong></br>
+    		<ul class='paragraphs'>
+    			<li>
+    				Trying to figure out how to link my controls with specific features in the image rendering (Layers, Brightness, Transparency, Color). I am still working on this and have some ideas, but I imagine it will take me some time writing functions specific to these functionalities. 
+    			</li>
+    		</ul>
+    		<ul class='paragraphs'>
+    			<li>
+    				Allowing my users to upload their own image files, that can be saved in some sort of remote database, and 3D rendered. I am planning to implement a MVP(Model, View, Presenter) framework and enable a customized user experience. I plan on publishing this project on a public domain - once I do this, I am hoping that images uploaded by users will be recognized by the browser and able to be rendered using my program.
+    			</li>
+    		</ul>
+    		<strong class='paragraphs'>What Next:</strong></br>
+    		<ul class='paragraphs'>
+    			<li>Finish creating working controls</li>
+    			<li>Implement my own Transfer Function</li>
+    			<li>Add Database</li>
+    			<li>Allow customized user profiles</li>
+    		</ul>
+    	</p>
+    </div>
+    <object width=100% height="800" data="VolumeRendering.pdf"></object>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
